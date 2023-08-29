@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Hunter</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@3.6.2/dist/full.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body>
+    <h1 class="text-center text-3xl">AI Universe Hub</h1>
+    <div class="flex justify-center items-center my-4">
+      <button onclick="loadCard()" class="btn btn-secondary">
+        Sort By Date
+      </button>
+    </div>
+
+    <!-- Spinner or Loading -->
+    <div id="loading-spinner" class="text-center hidden">
+      <span class="loading loading-spinner loading-md"></span>
+    </div>
+
+    <section>
+      <div
+        id="ai-container"
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+      ></div>
+
+      <!-- Show all button -->
+      <div id="show-all-container" class="text-center hidden my-4">
+        <button onclick="handleShowAll()" class="btn btn-accent">
+          show All
+        </button>
+      </div>
+    </section>
+
+    <!-- Open the modal using ID.showModal() method -->
+<!-- <button class="btn" onclick="show_details_modal.showModal()">open modal</button> -->
+<dialog id="show_details_modal" class="modal modal-bottom sm:modal-middle">
+  <form method="dialog" class="modal-box ">
+    <div id="Show-details-container">
+
+    </div>
+    <div class="modal-action">
+      <!-- if there is a button in form, it will close the modal -->
+      <button class="btn">Close</button>
+    </div>
+  </form>
+</dialog>
+
+    <script src="ai.js"></script>
+  </body>
+</html>
