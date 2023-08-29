@@ -99,70 +99,88 @@ const showCardDetails = (card) => {
     //     featuresNameList.appendChild(featureNameItem);
     // });
 
-    for (let i = 1; i <= 3; i++) {
-        const featureIndex = i;
-        const feature = card?.features && card?.features[featureIndex]?.feature_name
-            ? card.features[featureIndex].feature_name
-            : "No data Found";
+    // for (let i = 1; i <= 3; i++) {
+    //     const featureIndex = i;
+    //     const feature = card?.features && card?.features[featureIndex]?.feature_name
+    //         ? card.features[featureIndex].feature_name
+    //         : "No data Found";
 
-            const featuresNameList = document.createElement("ul");
-        const featureNameItem = document.createElement('li');
-        featureNameItem.innerText = feature;
-        featuresNameList.appendChild(featureNameItem);
-    }
+    //         const featuresNameList = document.createElement("ul");
+    //     const featureNameItem = document.createElement('li');
+    //     featureNameItem.innerText = feature;
+    //     featuresNameList.appendChild(featureNameItem);
+    // }
 
   showDetailsContainer.innerHTML = `
+  <div class="flex justify-between p-4 items-center gap-4">
+    <div>
         <p>${card.description}</p>
         <div class="flex gap-4 my-3">
             <div class="rounded-xl border-2 bg-gray-300 p-4 text-green-600 text-lg">
                 <p>${
-                  card?.pricing && card?.pricing[0]?.price
-                    ? card.pricing[0].price
-                    : "Free of cost"
-                }</p>
-                <p>${
-                  card?.pricing && card?.pricing[0]?.plan
-                    ? card?.pricing[0]?.plan
-                    : "Basic"
-                }</p>
-            </div>
-            <div class="rounded-xl border-2 bg-gray-300 p-4 text-orange-600 text-lg">
-            <p>${
-              card?.pricing && card?.pricing[1]?.price
-                ? card.pricing[1].price
+                card?.pricing && card?.pricing[0]?.price
+                ? card.pricing[0].price
                 : "Free of cost"
-            }</p>
+                }</p>
             <p>${
-              card?.pricing && card?.pricing[1]?.plan
-                ? card?.pricing[1]?.plan
+              card?.pricing && card?.pricing[0]?.plan
+                ? card?.pricing[0]?.plan
                 : "Basic"
             }</p>
-            </div>
-            <div class="rounded-xl border-2 bg-gray-300 p-4 text-red-600 text-lg">
-            <p>${
-              card?.pricing && card?.pricing[2]?.price
-                ? card.pricing[2].price
-                : "Free of cost"
-            }</p>
-            <p>${
-              card?.pricing && card?.pricing[2]?.plan
-                ? card?.pricing[2]?.plan
-                : "Basic"
-            }</p>
-            </div>
-            
         </div>
+        <div class="rounded-xl border-2 bg-gray-300     p-4     text-orange-600 text-lg">
+            <p>${
+            card?.pricing && card?.pricing[1]?.price
+            ? card.pricing[1].price
+            : "Free of cost"
+            }</p>
+            <p>${
+            card?.pricing && card?.pricing[1]?.plan
+            ? card?.pricing[1]?.plan
+            : "Basic"
+            }</p>
+        </div>
+        <div class="rounded-xl border-2 bg-gray-300 p-4 text-red-600 text-lg">
+            <p>${
+            card?.pricing && card?.pricing[2]?.price
+            ? card.pricing[2].price
+            : "Free of cost"
+            }</p>
+            <p>${
+            card?.pricing && card?.pricing[2]?.plan
+            ? card?.pricing[2]?.plan
+            : "Basic"
+            }</p>
+        </div>
+        
+    </div>
+        <div class="flex justify-between">
+            <div>
+                <p class="text-3xl font-bold my-2">Features</p> 
+                <ul>
+                    <li>${card?.features && card?.features[1]?.feature_name ? card.features[1].feature_name : "No data Found"}</li>
+                    <li>${card?.features && card?.features[2]?.feature_name ? card.features[2].feature_name : "No data Found"}</li>
+                    <li>${card?.features && card?.features[3]?.feature_name ? card.features[3].feature_name : "No data Found"}</li>
+                </ul>
+            </div>
+            <div>
+                <p class="text-3xl font-bold my-2">Integrations</p> 
+                <p>${featuresList.innerHTML}</p>
+            </div>
+        </div>
+</div>
+
+<div>
+    <p><img src="${card.image_link}" alt=""></p>
+    <p class="text-center">${card?.input_output_examples && card?.input_output_examples[1]?.input ? card.input_output_examples[1].input : "No data Found"}</p>
+
+    <p class="text-center">${card?.input_output_examples && card?.input_output_examples[1]?.output ? card.input_output_examples[1].output : "No data Found"}</p>
+</div>
+</div>     
 
        
-        <div>
-            <p class="text-3xl ">Features</p> 
-            <p>${featuresNameList.innerHTML}</p>
-            
-        </div>
-        <div>
-            <p class="text-2xl">Integrations</p> 
-            <p>${featuresList.innerHTML}</p>
-        </div>
+
+        
         
 
      `;
@@ -173,3 +191,4 @@ const showCardDetails = (card) => {
 const handleShowAll = () => {
   loadCard(true);
 };
+loadCard();
